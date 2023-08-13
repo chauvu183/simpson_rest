@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\QuoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Protected Route
+Route::middleware('auth:sanctum')->group( function (){
+    Route::get('quotes', [QuoteController::class, 'index']);
+    Route::get('quotes/fetch', [QuoteController::class, 'fetchAndStoreQuotes']);
+   // Route::post('logout', 'logout');
+});
+
