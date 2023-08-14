@@ -1,9 +1,19 @@
-FROM php:8.0-fpm-alpine
+FROM php:8.1 as app
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get update -y
+RUN apt-get install -y unzip
 
-RUN set -ex \
-    	&& apk --no-cache add postgresql-dev nodejs yarn npm\
-    	&& docker-php-ext-install pdo pdo_pgsql
+# Install PHP extensions including pdo_pgsql
+RUN apt-get install -y unzip libpq-dev libcurl4-gnutls-dev
+RUN docker-php-ext-install pdo pdo_pgsql bcmath
 
-WORKDIR /var/www/html
+
+WORKDIR /var/www
+COPY . .
+
+COPY --from=composer:2.3.5 /usr/bin/composer /usr/bin/composer
+
+ENV PORT=8000
+ENTRYPOINT [ "docker/entrypoint.sh" ]
+
+

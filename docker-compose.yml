@@ -1,0 +1,44 @@
+version: "3.8"
+networks:
+  webapp:
+
+services:
+  app:
+    build:
+      context: .
+      target: app
+      args:
+          - APP_ENV = ${APP_ENV}
+    container_name: ${APP_NAME}_app
+    environment:
+        - APP_ENV = ${APP_ENV}
+        - CONTAINER_ROLL = app
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8000:8000"
+    networks:
+      - webapp
+    depends_on:
+      -  database
+
+
+# Database
+  database:
+    image: postgres:13
+    container_name: ${APP_NAME}_postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    networks:
+      - webapp
+
+volumes:
+  db_data:
+

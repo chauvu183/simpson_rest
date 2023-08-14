@@ -112,7 +112,7 @@ class AuthController extends BaseController
     {
         if(Auth::attempt(['name' => $request->name, 'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken;
+            $success['token'] =  $user->createToken('auth-token')->plainTextToken;
             $success['name'] =  $user->name;
 
             return $this->sendResponse($success, 'User login successfully.');

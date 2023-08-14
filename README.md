@@ -30,6 +30,7 @@ Before you begin, ensure you have the following installed:
 ## Usage
 
 - To access the Simpsons API backend, navigate to [/api/quotes](http://localhost:8000) in your web browser.
+- Authenticate with your name and password by accessing [/api/login](http://localhost:8000/api/login) using a POST request. Provide the credentials in the request body as JSON:
 
 - To fetch new quotes from the Simpsons API and store them in the database, run:
    ```shell
