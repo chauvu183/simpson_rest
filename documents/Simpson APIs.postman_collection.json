@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "bb7ae27e-bda3-4c76-91eb-3655c23028cd",
+		"name": "Simpson APIs",
+		"description": "This collection contains following requests:\n\n- Register a user\n    \n- Login a user with given credentials\n    \n- Get new Quote\n    \n- Get 5 lastest Quotes from DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26729927"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"user3\",\r\n    \"email\": \"user3@mail.de\",\r\n    \"password\": \"p1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "chau3",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "chau3@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "db",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Quotes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|ixXqyAJQXovaW8UZHCIHvEwqzOgmh16TQmS4A33G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/quotes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quotes"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Quote",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|ixXqyAJQXovaW8UZHCIHvEwqzOgmh16TQmS4A33G",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/quotes/fetch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quotes",
+						"fetch"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

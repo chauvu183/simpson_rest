@@ -14,11 +14,12 @@ Before you begin, ensure you have the following installed:
 1. Clone this repository:
 2. Build and run the Docker containers:
    ```shell
-   docker-compose up -d
+   docker build
+   docker up -d
    ```
 3. Install Laravel dependencies:
     ```shell
-    docker-compose exec app composer install
+    docker exec app composer install
    ```
 
 ## Usage
@@ -36,15 +37,18 @@ Before you begin, ensure you have the following installed:
 
 - To fetch new quotes from the Simpsons API and store them in the database, run:
    ```shell
-   docker-compose exec app php artisan quotes:fetch
+   docker exec app php artisan quotes:fetch
    ```
 - To retrieve quotes, access the following endpoint: [/api/quotes](http://localhost:8000/api/quotes)
 
 ## Shutting Down
-
+To stop the Docker container, run:
+   ```shell
+   docker stop container_id
+   ```
 To stop and remove the Docker containers, run:
    ```shell
-   docker-compose down
+   docker down
    ```
 ## License
 
