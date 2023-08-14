@@ -12,7 +12,6 @@ services:
     container_name: ${APP_NAME}_app
     environment:
         - APP_ENV = ${APP_ENV}
-        - CONTAINER_ROLL = app
     volumes:
       - ./:/var/www
     ports:

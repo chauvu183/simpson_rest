@@ -17,30 +17,29 @@ class AuthController extends BaseController
             'password' => 'required',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-        $success['name'] =  $user->name;
+        $success['token'] = $user->createToken('MyApp')->plainTextToken;
+        $success['name'] = $user->name;
 
         return $this->sendResponse($success, 'User register successfully.');
     }
 
     public function login(Request $request)
     {
-        if(Auth::attempt(['name' => $request->name, 'password' => $request->password])){
+        if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
             $user = Auth::user();
-            $success['token'] =  $user->createToken('auth-token')->plainTextToken;
-            $success['name'] =  $user->name;
+            $success['token'] = $user->createToken('auth-token')->plainTextToken;
+            $success['name'] = $user->name;
 
             return $this->sendResponse($success, 'User login successfully.');
-        }
-        else{
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+        } else {
+            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
         }
     }
 
