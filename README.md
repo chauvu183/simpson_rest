@@ -1,7 +1,7 @@
 # Simpsons API Backend Docker Setup
 
-This repository contains a Dockerized setup for running the Simpsons API backend developed in Laravel.
-
+- This repository contains a Dockerized setup for running the Simpsons API backend developed in Laravel.
+- Solution architecture and Postman collections are included in [documents](/documents)
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
