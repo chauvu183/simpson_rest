@@ -20,17 +20,19 @@ Before you begin, ensure you have the following installed:
     ```shell
     docker-compose exec app composer install
    ```
-4. Set up the database:
-- Make sure the `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` in the `.env` file match the values in the `docker-compose.yml` file.
-5. Run migrations:
-   ```shell
-   docker-compose exec app php artisan migrate
-   ```
 
 ## Usage
 
 - To access the Simpsons API backend, navigate to [/api/quotes](http://localhost:8000) in your web browser.
-- Authenticate with your name and password by accessing [/api/login](http://localhost:8000/api/login) using a POST request. Provide the credentials in the request body as JSON:
+- Register new user with your name and password by accessing [/api/register](http://localhost:8000/api/register) using a POST request. Provide the credentials in the request body as JSON:
+```json
+  {
+  "name": "user1",
+  "email": "user@mail.de",
+  "password": "p1"
+  }
+```
+- Authenticate with your name and password by accessing [/api/login](http://localhost:8000/api/login) using a POST request.
 
 - To fetch new quotes from the Simpsons API and store them in the database, run:
    ```shell
