@@ -40,7 +40,65 @@ class QuoteController extends BaseController
         return $this->sendResponse(new QuoteResource($quote), 'Quote created successfully');
     }
 
-
+    /**
+     * Retrieve Quote
+     * @OA\Post (
+     *     path="/api/quotes/fetch",
+     *     tags={"quote"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="quote",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="character",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="image",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="characterDirection",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "quote": "Shoplifting is a victimless crime, like punching someone in the dark.",
+     *                      "character": "Nelson Muntz",
+     *                      "image" : "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FNelsonMuntz.png?1497567511185",
+     *                      "characterDirection" : "Left"
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="quote", type="string", example="quote"),
+     *              @OA\Property(property="character", type="string", example="character"),
+     *              @OA\Property(property="image", type="string", example="image"),
+     *              @OA\Property(property="characterDirection", type="string", example="characterDirection"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="msg", type="string", example="fail"),
+     *          )
+     *      )
+     * )
+     */
     public function fetchAndStoreQuotes(): \Illuminate\Http\JsonResponse
     {
         try {
