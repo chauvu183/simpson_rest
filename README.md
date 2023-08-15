@@ -14,6 +14,7 @@ Before you begin, ensure you have the following installed:
 1. Clone this repository:
 2. Build and run the Docker containers:
    ```shell
+   docker-compose build
    docker-compose up -d
    ```
 
