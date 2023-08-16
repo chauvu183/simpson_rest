@@ -12,14 +12,14 @@ Before you begin, ensure you have the following installed:
 ## Getting Started
 
 1. Clone this repository:
-2. Build and run the Docker containers:
+2. Install Composer locally:
+   ```shell
+   composer install
+   ```
+4. Build and run the Docker containers:
    ```shell
    docker-compose build
    docker-compose up -d
-   ```
-3. Install Laravel dependencies:
-    ```shell
-    docker-compose exec app composer install
    ```
 
 ## Usage
@@ -39,6 +39,9 @@ Before you begin, ensure you have the following installed:
    ```shell
    docker-compose exec app php artisan quotes:fetch
    ```
+or
+call GET request with [/api/quotes/fetch](http://localhost:8000/api/quotes/fetch)
+
 - To retrieve quotes, access the following endpoint: [/api/quotes](http://localhost:8000/api/quotes)
 
 ## Shutting Down
