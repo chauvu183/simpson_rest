@@ -64,7 +64,7 @@ class QuoteController extends BaseController
 
             return $this->sendResponse(new QuoteResource($newQuote), 'Quote retrieved and updated successfully.');
         } catch (\Exception $e) {
-            return response()->json(['error' => 'An error occurred while fetching and storing the quote'], 500);
+            return $this->sendError('Network Error.', ['error' => 'An error occurred while fetching and storing the quote'], 500);
         }
     }
 
