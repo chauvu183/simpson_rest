@@ -12,7 +12,11 @@ Before you begin, ensure you have the following installed:
 ## Getting Started
 
 1. Clone this repository:
-2. Build and run the Docker containers:
+2. Install Composer locally:
+   ```shell
+   composer install
+   ```
+4. Build and run the Docker containers:
    ```shell
    docker-compose build
    docker-compose up -d
